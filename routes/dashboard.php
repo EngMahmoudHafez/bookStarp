@@ -10,7 +10,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale().'/dashboard',
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 ], function () {
     Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
@@ -19,11 +19,6 @@ Route::group([
         Route::post('login', [AuthController::class, 'login'])->name('login');
 
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    });
-
-
-    Route::get('/', function () {
-        return view('website.site.home.index');
     });
 
 });

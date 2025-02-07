@@ -1,12 +1,5 @@
 @extends('website.core.app')
-@section('title', __('titles.Home'))
 @section('content')
-    <!-- crat -->
-    <!-- Shopping Cart Icon -->
-    <a href="cart.html" class="cart-icon">
-        <i class="bi bi-cart-fill"></i>
-    </a>
-
 
     <!--ShowCase-->
     <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
@@ -23,7 +16,7 @@
                     <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#enroll">Start the
                         Enrollment</button>
                 </div>
-                <img class="img-fluid w-50 d-none d-sm-block" src="showcase/undraw_reading_atc8.svg" alt="">
+                <img class="img-fluid w-50 d-none d-sm-block" src="{{asset('website/showcase/undraw_reading_atc8.svg')}}" alt="">
             </div>
         </div>
     </section>
@@ -114,7 +107,7 @@
 
 
     </section>
-    <script src="showcase/mainPage.js"></script>
+    <script src="{{asset('website/showcase/mainPage.js')}}"></script>
 
     <!-- Learn Sections -->
     <section id="Why-us" class="p-5 bg-dark text-light">
@@ -306,7 +299,7 @@
 
     <!-- Contact Section -->
     <!-- Contact Section -->
-    <section class="p-5 bg-light">
+    <section  id="Contacts" class="p-5 bg-light">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-6"> <!-- Adjusted the width of the first column to 6/12 -->

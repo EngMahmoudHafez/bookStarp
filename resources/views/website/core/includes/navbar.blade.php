@@ -19,7 +19,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#intro">Introductions</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Contacts">Contacts</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<a href="cart.html" class="cart-icon">
+    <i class="bi bi-cart-fill"></i>
+</a>
