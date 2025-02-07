@@ -8,24 +8,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="Favorites.html" class="nav-link">Favorites</a>
+                    <a href="{{route('favorites')}}" class="nav-link">Favorites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Why-us">Why us?</a>
+                    <a class="nav-link" href="{{route('index')}}#Why-us">Why us?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#questions">Questions</a>
+                    <a class="nav-link" href="{{route('index')}}#questions">Questions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#intro">Introductions</a>
+                    <a class="nav-link" href="{{route('index')}}#intro">Introductions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Contacts">Contacts</a>
+                    <a class="nav-link" href="{{route('index')}}#Contacts">Contacts</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<a href="cart.html" class="cart-icon">
+<a href="{{route('cart')}}" class="cart-icon">
     <i class="bi bi-cart-fill"></i>
 </a>

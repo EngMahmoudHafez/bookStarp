@@ -39,7 +39,7 @@
             <div class="d-flex justify-content-between mb-4">
                 <h2>Books Collection</h2>
                 <!-- See More Button -->
-                <a href="showMore.html" class="btn btn-outline-primary">See More</a>
+                <a href="{{route('showMore')}}" class="btn btn-outline-primary">See More</a>
             </div>
             <div class="row g-4">
                 <!-- Book 1 -->
@@ -50,7 +50,7 @@
                             <button class="btn btn-light position-absolute top-0 end-0 m-2 heart-btn">
                                 <i class="bi bi-heart"></i> <!-- Initial icon is empty heart -->
                             </button>
-                            <img src="showcase/نفسي.webp" class="card-img-top" alt="Book Image 1">
+                            <img src="{{asset('website/showcase/نفسي.webp')}}" class="card-img-top" alt="Book Image 1">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">محاط بالحمقي</h5>
@@ -70,7 +70,7 @@
                             <button class="btn btn-light position-absolute top-0 end-0 m-2 heart-btn">
                                 <i class="bi bi-heart"></i> <!-- Initial icon is empty heart -->
                             </button>
-                            <img src="showcase/ادب.webp" class="card-img-top" alt="Book Image 2">
+                            <img src="{{asset('website/showcase/ادب.webp')}}" class="card-img-top" alt="Book Image 2">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">الادب العريب الحديث</h5>
@@ -90,7 +90,7 @@
                             <button class="btn btn-light position-absolute top-0 end-0 m-2 heart-btn">
                                 <i class="bi bi-heart"></i> <!-- Initial icon is empty heart -->
                             </button>
-                            <img src="showcase/تاريخ.webp" class="card-img-top" alt="Book Image 3">
+                            <img src="{{asset('website/showcase/تاريخ.webp')}}" class="card-img-top" alt="Book Image 3">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">التاريخ الروماني</h5>
@@ -298,7 +298,6 @@
 
 
     <!-- Contact Section -->
-    <!-- Contact Section -->
     <section  id="Contacts" class="p-5 bg-light">
         <div class="container">
             <div class="row g-4">
@@ -380,7 +379,7 @@
                     </form>
                     <div class="text-center mt-3">
                         <p class="mb-0">Don't have an account?
-                            <a href="signup.html" class="text-primary">Sign Up</a>
+                            <a data-bs-toggle="modal" data-bs-target="#signup" aria-label="Close" class="text-primary">Sign Up</a>
                         </p>
                     </div>
                 </div>
@@ -388,4 +387,70 @@
         </div>
     </div>
 
+    <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="enrollLabel">Create an Account</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <!-- Signup Form -->
+                        <form id="signupForm">
+                            <div class="row">
+                                <!-- First Name -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="first-name" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="first-name" required>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="last-name" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="last-name" required>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="mb-3">
+                                <label for="confirm-password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirm-password" required>
+                            </div>
+
+                            <!-- Terms & Conditions -->
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="terms" required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to the <a href="#">terms and conditions</a>
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Have an account?
+                            <a data-bs-toggle="modal" data-bs-target="#enroll" aria-label="Close" class="text-primary">Sign In</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
