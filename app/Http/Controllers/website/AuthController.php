@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Auth;
+namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Auth\SignInRequest;
 use App\Http\Requests\Api\V1\Auth\SignUpRequest;
-use App\Http\Services\Api\V1\Auth\AuthService;
+use App\Http\Services\website\AuthService;
 
 class AuthController extends Controller
 {
@@ -28,8 +28,4 @@ class AuthController extends Controller
         return $this->auth->signOut();
     }
 
-    public function whatIsMyPlatform()
-    {
-        return $this->auth->whatIsMyPlatform();
-    }
 }

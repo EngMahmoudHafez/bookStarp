@@ -19,6 +19,5 @@ class ManagerSeeder extends Seeder
             'phone' => '+96650000000',
             'password' => '123123123'
         ]);
-        $manager->addRole(1);
     }
 }

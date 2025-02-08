@@ -1,24 +1,18 @@
 <?php
 
-namespace App\Http\Services\Api\V1\Auth;
+namespace App\Http\Services\website;
 
 use App\Http\Requests\Api\V1\Auth\SignInRequest;
 use App\Http\Requests\Api\V1\Auth\SignUpRequest;
 use App\Http\Resources\V1\User\UserResource;
-use App\Http\Services\Api\V1\Auth\Otp\OtpService;
-use App\Http\Services\PlatformService;
-use App\Http\Traits\Responser;
 use App\Repository\UserRepositoryInterface;
-use Exception;
 use Illuminate\Support\Facades\DB;
 
-abstract class AuthService extends PlatformService
+class AuthService
 {
-    use Responser;
 
     public function __construct(
         private readonly UserRepositoryInterface $userRepository,
-        private readonly OtpService $otpService ,
     )
     {
     }
@@ -26,29 +20,33 @@ abstract class AuthService extends PlatformService
     public function signUp(SignUpRequest $request) {
         DB::beginTransaction();
         try {
-            $data = $request->validated();
+            $data = $request->except(['password_confirmation','first_name','last_name','terms']);
 
+            $data['name'] = $request->first_name . ' ' . $request->last_name;
             $user = $this->userRepository->create($data);
-                return route('index',);
+
             DB::commit();
+            return redirect()->route('index')->with(['success' => __('messages.created successfully')]);
         } catch (Exception $e) {
             DB::rollBack();
+            return redirect()->route('index')->with(['error' => __('messages.error')]);
         }
     }
 
     public function signIn(SignInRequest $request) {
         $credentials = $request->only('email', 'password');
-        $token = auth('api')->attempt($credentials);
-        if ($token) {
-            return $this->responseSuccess(message: __('messages.Successfully authenticated'), data: new UserResource(auth('api')->user(), true));
+        if (auth('api')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('index')->with(['success'=>'done']); // Change this if needed
         }
 
-        return $this->responseFail(status: 401, message: __('messages.wrong credentials'));
+        return back()->with([
+            'error' => 'Invalid credentials',
+        ]);
     }
 
     public function signOut() {
         auth('api')->logout();
-        return $this->responseSuccess(message: __('messages.Successfully loggedOut'));
-    }
+        return redirect()->route('index')->with(['success'=>'done']);    }
 
 }

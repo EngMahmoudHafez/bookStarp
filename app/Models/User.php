@@ -18,14 +18,8 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'otp_verified',
-        'is_active',
-    ];
+    protected $guarded = [];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -61,10 +55,13 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function otp(){
-        return $this->hasOne(Otp::class);
+    public function favorites()
+    {
+        return $this->hasMany(userBook::class, 'user_id');
     }
-    public function otps(){
-        return $this->hasMany(Otp::class);
+
+    public function cart()
+    {
+        return $this->belongsToMany(Book::class, 'cart')->withTimestamps();
     }
 }

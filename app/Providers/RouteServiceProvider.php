@@ -29,41 +29,8 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
-            if (app()->isProduction()) {
-                Route::group([
-                    'middleware' => ['api', 'localize-api'],
-                    'domain' => env('PRODUCTION_API_SUBDOMAIN')
-                ], function () {
-                    Route::prefix('api/v1')->group(function () {
-                        Route::prefix('website')->group(base_path('routes/api/v1/website.php'));
-                        Route::prefix('mobile')->group(base_path('routes/api/v1/mobile.php'));
-                        Route::prefix(prefix: 'dashboard')->group(base_path('routes/api/v1/dashboard.php'));
-                    });
-                });
-
                 Route::middleware('web')
                     ->group(base_path('routes/web.php'));
-
-                Route::middleware('web')
-                    ->domain('PRODUCTION_DASHBOARD_SUBDOMAIN')
-                    ->group(base_path('routes/dashboard.php'));
-            } else {
-                Route::group(['middleware' => ['api', 'localize-api']], function () {
-                    Route::prefix('api/v1')->group(function () {
-                        Route::prefix('website')->group(base_path('routes/api/v1/website.php'));
-                        Route::prefix('mobile')->group(base_path('routes/api/v1/mobile.php'));
-                        Route::prefix('dashboard')->group(base_path('routes/api/v1/dashboard.php'));
-                    });
-                });
-
-                Route::middleware('web')
-                    ->group(base_path('routes/web.php'));
-
-                Route::middleware('web')
-                    ->group(base_path('routes/dashboard.php'));
-            }
-
-
         });
     }
 }
