@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\website\AuthController;
 use App\Http\Controllers\website\BookController;
-use App\Models\book;
-use App\Models\userBook;
+use App\Models\Book;
+use App\Models\UserBook;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -30,7 +30,7 @@ Route::get('/showMore', function () {
 })->name('showMore');
 
 Route::get('/favorites', function () {
-    $id= userBook::where('user_id',auth('api')->id())->pluck('id')->toArray();
+    $id= UserBook::where('user_id',auth('api')->id())->pluck('id')->toArray();
     $books=Book::whereIn('id',$id)->get();
 
     return view('website.site.favorites');
