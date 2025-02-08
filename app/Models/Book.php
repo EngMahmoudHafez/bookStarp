@@ -13,7 +13,7 @@ class book extends Model
 
     public function favorites()
     {
-        return $this->hasMany(userBook::class);
+        return $this->hasMany(UserBook::class);
     }
 
     public function users()
