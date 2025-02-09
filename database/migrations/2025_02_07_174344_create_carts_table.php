@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
-            $table->integer('quantity');
-            $table->integer('price');
-            $table->integer('total');
+            $table->integer('quantity')->nullable();
+            $table->integer('price')->nullable();
+            $table->integer('total')->nullable();
             $table->boolean('is_purchased')->default(0);
             $table->boolean('is_canceled')->default(0);
             $table->boolean('is_returned')->default(0);
