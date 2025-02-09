@@ -14,7 +14,7 @@
                                     <i class="bi bi-heart"></i>
                                 </button>
                                 <!-- Book Image -->
-                                <img src="{{ asset('storage/' . $book->image) }}" class="card-img-top" alt="{{ $book->title }}">
+                                <img src="{{asset('website/showcase/تاريخ.webp')}}" class="card-img-top" alt="{{ $book->title }}">
                             </div>
                             <div class="card-body">
                                 <!-- Book Title -->
@@ -45,7 +45,7 @@
             button.addEventListener('click', function () {
                 const bookId = this.getAttribute('data-book-id');
 
-                fetch('/add-to-cart', {
+                fetch('{{route('add-to-cart')}}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@
             const bookId = button.getAttribute('data-book-id');
             const isFavorite = button.classList.contains('active');
 
-            const url = isFavorite ? '/remove-from-favorites' : '/add-to-favorites';
+            const url = isFavorite ? '{{route('remove-from-favorites')}}' : '{{route('add-to-favorites')}}';
 
             fetch(url, {
                 method: 'POST',

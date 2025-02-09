@@ -52,7 +52,7 @@
                                         <i class="bi bi-heart"></i>
                                     </button>
                                     <!-- Book Image -->
-                                    <img src="{{ asset('storage/' . $book->image) }}" class="card-img-top" alt="{{ $book->title }}">
+                                    <img src="{{asset('website/showcase/تاريخ.webp')}}" class="card-img-top" alt="{{ $book->title }}">
                                 </div>
                                 <div class="card-body">
                                     <!-- Book Title -->
