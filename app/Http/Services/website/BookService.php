@@ -23,7 +23,7 @@ class BookService
         ]);
 
         // Get the authenticated user
-        $user = Auth::user();
+        $user = Auth::guard('api')->user();
 
         // Add the book to the user's cart (assuming you have a cart system)
         $user->cart()->attach($request->book_id);
